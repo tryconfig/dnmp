@@ -1,0 +1,15 @@
+/dnmp/logs/web/*.log {
+    su root root
+    daily
+    rotate 365
+    missingok
+    notifempty
+    sharedscripts
+    dateext
+    postrotate
+        if [ -f /dnmp/run/nginx.pid ]; then
+            docker exec dnmp_web_1 nginx -s reload
+        fi
+    endscript
+}
+

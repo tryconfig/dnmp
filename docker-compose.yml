@@ -1,0 +1,55 @@
+version: '3.4'
+
+services:
+      db:
+        image: mysql:5.6.40
+        volumes:
+         - ./database:/var/lib/mysql:rw
+         - ./mysql_conf/my.cnf:/etc/my.cnf:ro
+         - ./logs/mysql:/var/log/mysql:rw
+        restart: always
+#        ports:
+#         - "3306:3306"
+        environment:
+         MYSQL_ROOT_PASSWORD: toor
+         MYSQL_DATABASE: test
+         MYSQL_USER: user
+         MYSQL_PASSWORD: password
+        networks:
+         - backend
+
+      web:
+        image: tryconfig/nginx-echo-logif:1.15.0-alpine
+        ports:
+         - "80:80"
+         - "443:443"
+        restart: always
+        depends_on:
+         - fpm
+        volumes:
+         - ./ng_conf:/etc/nginx/:ro
+         - ./web:/web:rw
+         - ./logs/web:/var/log/nginx/:rw
+         - ./ssl:/ssl:ro
+         - ./run:/var/run/:rw
+        networks:
+         - frontend
+      fpm:
+#        image: php:5.6.35-fpm-alpine
+        image: tryconfig/php-mysqli:5.6.36-fpm-alpine
+#       ports:
+#        - "9000:9000"
+        restart: always
+        volumes:
+         - ./web:/web:rw
+         - ./php_conf/etc:/usr/local/etc:ro
+#        links:
+#         - db
+        depends_on:
+         - db
+        networks:
+         - frontend
+         - backend
+networks:
+        frontend:
+        backend:
