@@ -36,7 +36,7 @@ services:
          - frontend
       fpm:
 #        image: php:5.6.35-fpm-alpine
-        image: tryconfig/php-mysqli:5.6.36-fpm-alpine
+        image: tryconfig/php-mysqli:5.6.36-fpm-alpine3.7
 #       ports:
 #        - "9000:9000"
         restart: always
