@@ -11,5 +11,5 @@ echo "<h1>成功连接到mysql服务器</h1>" . PHP_EOL;
 mysqli_close($conn);
 // 使用 phpinfo() 显示完整服务端信息
 #phpinfo();
-echo "This is http.";
+echo "This is https.";
 ?>
