@@ -2,4 +2,4 @@
 
 ### Version
 1.alpine:3.7.
-2.nginx:1.15.0.
+2.nginx:1.14.0.

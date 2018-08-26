@@ -1,8 +1,8 @@
 FROM alpine:3.7
 
-LABEL maintainer="LQL <awhoo00@yahoo.com>"
+LABEL maintainer="Tryconfig <tryconfig@outlook.com>"
 
-ENV NGINX_VERSION 1.15.0
+ENV NGINX_VERSION 1.14.0
 ENV ADDMODULE="/usr/src/ngaddmodule"
 
 RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
