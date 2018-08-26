@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
       db:
-        image: mysql:5.6.40
+        image: mysql:5.6.41
         volumes:
          - ./database:/var/lib/mysql:rw
          - ./mysql_conf/my.cnf:/etc/my.cnf:ro
@@ -19,7 +19,7 @@ services:
          - backend
 
       web:
-        image: tryconfig/nginx-echo-logif:1.15.0-alpine
+        image: tryconfig/nginx-echo-logif:1.14.0-alpine
         ports:
          - "80:80"
          - "443:443"
@@ -36,7 +36,7 @@ services:
          - frontend
       fpm:
 #        image: php:5.6.35-fpm-alpine
-        image: tryconfig/php-mysqli:5.6.36-fpm-alpine3.7
+        image: tryconfig/php-mysqli:5.6.37-fpm-alpine3.8
 #       ports:
 #        - "9000:9000"
         restart: always
