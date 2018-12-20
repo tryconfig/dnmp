@@ -1,2 +1,3 @@
 *
 !.gitignore
+!fpm-php.www.log
