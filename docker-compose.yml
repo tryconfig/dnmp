@@ -3,6 +3,7 @@ version: '3.4'
 services:
       db:
         image: mysql:5.6.41
+        container_name: dnmp_mysql
         volumes:
          - ./database:/var/lib/mysql:rw
          - ./mysql_conf/my.cnf:/etc/my.cnf:ro
@@ -20,6 +21,7 @@ services:
 
       web:
         image: tryconfig/nginx-add:1.14.2-alpine
+        container_name: dnmp_nginx
         ports:
          - "80:80"
          - "443:443"
@@ -36,6 +38,7 @@ services:
          - frontend
       fpm:
         image: tryconfig/php-add:5.6.39-fpm-alpine3.8
+        container_name: dnmp_fpm
 #       ports:
 #        - "9000:9000"
         restart: always
